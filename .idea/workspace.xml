@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="223a255c-f482-43ba-ab17-23a3bccb08f5" name="Changes" comment="" />
+    <list default="true" id="223a255c-f482-43ba-ab17-23a3bccb08f5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nb.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/nb.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/othello.py" beforeDir="false" afterPath="$PROJECT_DIR$/othello.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,7 +118,7 @@
       <workItem from="1688779149729" duration="17129000" />
       <workItem from="1688831887284" duration="77000" />
       <workItem from="1688832173733" duration="3171000" />
-      <workItem from="1688860031774" duration="19100000" />
+      <workItem from="1688860031774" duration="23157000" />
     </task>
     <servers />
   </component>

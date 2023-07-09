@@ -3,28 +3,13 @@ import copy
 
 
 class Othello:
-    def __init__(self, board, depth=3):
-        # self.board = np.zeros((8,8))
-        # self.board[3,3] = 1
-        # self.board[4,4] = 1
-        # self.board[3,4] = -1
-        # self.board[4,3] = -1
-        # self.turn = -1
-        # self.passed = False
-        # self.winner = 0
-        # self.legal_moves = self.get_legal_moves()
-        # self.game_over = False
-        # # self.score = self.get_score()
-        # self.history = []
-        # self.history.append(copy.deepcopy(self.board))
-        # self.depth = depth
+    def __init__(self, board,turn, depth=3):
         self.board = board
-        self.turn = -1
+        self.turn = turn
         self.passed = False
         self.winner = 0
         self.legal_moves = self.get_legal_moves()
         self.game_over = False
-        # self.score = self.get_score()
         self.history = []
         self.history.append(copy.deepcopy(self.board))
         self.depth = depth
@@ -115,7 +100,6 @@ class Othello:
                     score += self.board[i, j]
         return score
 
-    # alpha beta pruning
     def undo_move(self):
         self.history.pop()
         self.board = copy.deepcopy(self.history[-1])
@@ -123,15 +107,13 @@ class Othello:
         self.legal_moves = self.get_legal_moves()
 
     def max_val(self, alpha, beta, depth):
-        # print(depth)
-        # print(self.board)
-        # print(self.get_score())
         if depth == 0:
             return self.get_score()
         v = -np.inf
         for move in self.get_legal_moves():
             condition = self.make_move(move[0], move[1])
-            v = max(v, self.min_val(alpha, beta, depth - 1))
+            if condition:
+                v = max(v, self.min_val(alpha, beta, depth - 1))
             if condition:
                 self.undo_move()
             if v >= beta:
@@ -140,15 +122,13 @@ class Othello:
         return v
 
     def min_val(self, alpha, beta, depth):
-        # print(depth)
-        # print(self.board)
-        # print(self.get_score())
         if depth == 0:
             return self.get_score()
         v = np.inf
         for move in self.get_legal_moves():
             condition = self.make_move(move[0], move[1])
-            v = min(v, self.max_val(alpha, beta, depth - 1))
+            if condition:
+                v = min(v, self.max_val(alpha, beta, depth - 1))
             if condition:
                 self.undo_move()
             if v <= alpha:
@@ -163,7 +143,8 @@ class Othello:
         best_move = None
         for move in self.get_legal_moves():
             condition = self.make_move(move[0], move[1])
-            new_v = self.min_val(alpha, beta, depth - 1)
+            if condition:
+                new_v = self.min_val(alpha, beta, depth - 1)
             if condition:
                 self.undo_move()
             if new_v >= v:
@@ -181,7 +162,8 @@ class Othello:
         best_move = None
         for move in self.get_legal_moves():
             condition = self.make_move(move[0], move[1])
-            new_v = self.max_val(alpha, beta, depth - 1)
+            if condition:
+                new_v = self.max_val(alpha, beta, depth - 1)
             if condition:
                 self.undo_move()
             if new_v <= v:
